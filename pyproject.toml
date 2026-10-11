@@ -4,7 +4,12 @@ version = "0.0.1"
 description = "A live ledger of company state, with an AI twin for every teammate"
 license = "MIT"
 requires-python = ">=3.12"
-dependencies = ["psycopg[binary]>=3.2", "httpx>=0.27", "slack-bolt>=1.21"]
+dependencies = [
+    "psycopg[binary]>=3.2",
+    "httpx>=0.27",
+    "slack-bolt>=1.21",
+    "anthropic>=1.13.0",
+]
 
 [project.scripts]
 sa = "sa.__main__:main"

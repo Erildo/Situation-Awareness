@@ -62,6 +62,10 @@ create table if not exists evidence_ref (
   state_id      bigint references state on delete cascade,
   at            timestamptz not null
 );
+-- PRs/issues only: who opened it, open|closed|merged, when merged. Feeds the prs() tool.
+alter table evidence_ref add column if not exists author_id bigint references person;
+alter table evidence_ref add column if not exists status text;
+alter table evidence_ref add column if not exists merged_at timestamptz;
 
 -- Owner-approved answers (Q10): asked once, answered forever.
 create table if not exists fact (
@@ -97,6 +101,9 @@ create table if not exists query_log (
   level      smallint check (level between 1 and 4),
   created_at timestamptz not null default now()
 );
+alter table query_log add column if not exists thread_ref text;  -- follow-ups in that thread go to the same twin
+alter table query_log add column if not exists sources text[];
+alter table escalation add column if not exists owner_ref text;  -- the owner's DM message, replies to it answer
 
 -- Job queue, consumed with FOR UPDATE SKIP LOCKED. Rows are deleted when done.
 create table if not exists job (
@@ -107,3 +114,8 @@ create table if not exists job (
   created_at timestamptz not null default now()
 );
 create index if not exists job_ready on job (run_after);
+
+-- Keyword search for the twin (search tool). ponytail: built-in FTS; ParadeDB BM25 / pgvector when recall falls short.
+create index if not exists workstream_fts on workstream using gin (to_tsvector('english', title || ' ' || anchor_id));
+create index if not exists state_fts on state using gin (to_tsvector('english', text));
+create index if not exists fact_fts on fact using gin (to_tsvector('english', question || ' ' || answer));

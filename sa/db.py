@@ -7,7 +7,8 @@ PERSON_KEYS = ("email", "slack_id", "teams_id", "github_login", "linear_id")
 # Every column that points at person, so a merge can move them all.
 PERSON_FKS = [("workstream", "owner_id"), ("state", "owner_id"), ("fact", "owner_id"),
               ("escalation", "owner_id"), ("escalation", "asker_id"),
-              ("query_log", "owner_id"), ("query_log", "asker_id")]
+              ("query_log", "owner_id"), ("query_log", "asker_id"),
+              ("evidence_ref", "author_id")]
 
 
 class IdentityConflict(Exception):
@@ -16,6 +17,7 @@ class IdentityConflict(Exception):
 
 def connect():
     conn = psycopg.connect(os.environ.get("DATABASE_URL", "postgresql:///sa"), autocommit=True)
+    conn.execute("set timezone = 'UTC'")
     conn.execute((Path(__file__).parent / "schema.sql").read_text())
     return conn
 
@@ -105,11 +107,15 @@ def workstream(conn, anchor_kind, anchor_id, title, status, url, scope, owner_id
     ).fetchone()[0]
 
 
-def evidence(conn, url, source, scope, title, at, workstream_id=None, state_id=None):
-    conn.execute(
-        """insert into evidence_ref (url, source, scope, title, at, workstream_id, state_id)
-           values (%s, %s, %s, %s, %s, %s, %s)
+def evidence(conn, url, source, scope, title, at, workstream_id=None, state_id=None,
+             author_id=None, status=None, merged_at=None):
+    return conn.execute(
+        """insert into evidence_ref (url, source, scope, title, at, workstream_id, state_id, author_id, status, merged_at)
+           values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
            on conflict (url) do update set title = excluded.title, at = excluded.at,
-             workstream_id = excluded.workstream_id, scope = excluded.scope""",
-        (url, source, scope, title, at, workstream_id, state_id),
-    )
+             workstream_id = excluded.workstream_id, scope = excluded.scope,
+             state_id = coalesce(excluded.state_id, evidence_ref.state_id), author_id = excluded.author_id,
+             status = excluded.status, merged_at = excluded.merged_at
+           returning id""",
+        (url, source, scope, title, at, workstream_id, state_id, author_id, status, merged_at),
+    ).fetchone()[0]

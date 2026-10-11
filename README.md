@@ -4,7 +4,7 @@
 
 An open-source, self-hosted system that keeps a live record of what your company has decided, promised and is blocked on. It gives every teammate an AI twin that answers for them, with sources, while they're busy.
 
-> 🚧 **Early and honest about it:** we're in **phase M1 of 6**. The foundation works; the twin starts answering in M2. [See the roadmap](#roadmap). We're looking for **design partners** to shape it with us. [Work with us ↓](#work-with-us)
+> 🚧 **Early and honest about it:** we're in **phase M2 of 6**. Twins answer in Slack (facts and status now, decisions go to the human); confirming decisions in-thread comes in M3. [See the roadmap](#roadmap). We're looking for **design partners** to shape it with us. [Work with us ↓](#work-with-us)
 
 ---
 
@@ -98,15 +98,15 @@ flowchart LR
 | **Blocker** | "Stripe upgrade blocked on INFRA-123" (who's waiting on whom) |
 | **Fact** | An answer the owner gave once, reused for every future asker |
 
-Under the hood: Python and a single Postgres database (pgvector for search). Claude by default, or any OpenAI-compatible model, including fully local ones.
+Under the hood: Python and a single Postgres database. Twins answer through typed, read-only queries over the ledger (no AI-written SQL), plus keyword search. The permission check runs inside every query. Claude by default.
 
 ## Roadmap
 
 | Phase | What it delivers | Status |
 |---|---|---|
-| **M1: Foundation** | The ledger, GitHub and Linear sync, Slack connection, one identity per person across tools, permission rules, and a test company with graded scenarios | ✅ **Built.** Next step: first real-workspace run |
-| **M2: The twin answers** | Instant answers with sources, risk tiers, the owner's queue, and answers that become reusable facts | ⏭️ Next |
-| **M3: The record writes itself** | Decisions, commitments and blockers proposed in-thread and confirmed with one ✅ | Planned |
+| **M1: Foundation** | The ledger, GitHub and Linear sync, Slack connection, one identity per person across tools, permission rules, and a test company with graded scenarios | ✅ **Built** |
+| **M2: The twin answers** | Instant answers with sources, risk tiers, the owner's queue, and answers that become reusable facts | ✅ **Built.** Next step: first real-workspace run |
+| **M3: The record writes itself** | Decisions, commitments and blockers proposed in-thread and confirmed with one ✅ | ⏭️ Next |
 | **M4: Microsoft Teams** | Everything above, in Teams | Planned |
 | **M5: Awareness + agents** | "This changed and affects you" alerts, an MCP server for AI agents, and an owner page with controls and the question log | Planned |
 | **M6: Ready for anyone** | One-command install, Slack and Teams app manifests, a data-processing document and a demo company | Planned |
@@ -130,15 +130,21 @@ uv sync
 uv run python -m sa seed     # load "Acme", a realistic 30-person test company
 uv run python -m sa status   # see its workstreams
 uv run python -m sa link     # review accounts that couldn't be matched automatically
-createdb sa_test && DATABASE_URL=postgresql:///sa_test uv run python -m sa eval   # graded scenarios
+createdb sa_test && export DATABASE_URL=postgresql:///sa_test
+uv run python test_sync.py && uv run python test_twin.py   # no API key needed
+ANTHROPIC_API_KEY=... uv run python -m sa eval              # graded scenarios, incl. 24 questions to the twin
 ```
 
 With real data:
 
 ```bash
 LINEAR_API_KEY=... GITHUB_TOKEN=... uv run python -m sa sync your-org/your-repo
-SLACK_BOT_TOKEN=xoxb-... SLACK_APP_TOKEN=xapp-... uv run python -m sa slack   # app from slack-manifest.yaml
+uv run python -m sa optin priya@yourco.com    # twins are opt-in, per person
+SLACK_BOT_TOKEN=xoxb-... SLACK_APP_TOKEN=xapp-... ANTHROPIC_API_KEY=... uv run python -m sa slack   # app from slack-manifest.yaml
+uv run python -m sa queue                      # questions waiting on their owners
 ```
+
+In Slack, @mention an opted-in teammate who is away or on Do Not Disturb, or DM the bot (`@Priya is the migration done?`). Questions that need a decision go to the owner as a DM. The owner's reply is posted back and saved as a fact the twin reuses. Set `SA_MODEL` to change the model (default `claude-opus-5-5`).
 
 ## License
 

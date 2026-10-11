@@ -5,12 +5,16 @@ features:
   bot_user:
     display_name: twin
     always_online: true
+  app_home:
+    messages_tab_enabled: true
+    messages_tab_read_only_enabled: false
 oauth_config:
   scopes:
-    bot: [channels:history, channels:read, chat:write, users:read, users:read.email, dnd:read]
+    bot: [channels:history, channels:read, chat:write, users:read, users:read.email, dnd:read,
+          im:history, im:read, im:write]
 settings:
   event_subscriptions:
-    bot_events: [message.channels, member_joined_channel, member_left_channel]
+    bot_events: [message.channels, message.im, member_joined_channel, member_left_channel]
   interactivity:
     is_enabled: true
   socket_mode_enabled: true

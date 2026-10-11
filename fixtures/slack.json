@@ -293,7 +293,7 @@
  "threads": [
   {
    "channel": "C_INFRA",
-   "ts": "1760086800.000100",
+   "ts": "1791536400.000100",
    "messages": [
     [
      "Priya Shah",
@@ -311,11 +311,20 @@
      "Kenji Mori",
      "approved :white_check_mark:"
     ]
+   ],
+   "state": [
+    {
+     "kind": "decision",
+     "anchor": "INFRA-123",
+     "text": "Prod cutover to Postgres 16 is Friday Oct 16, 22:00 UTC, with a 30 min read-only window",
+     "owner": "priya@acme.test",
+     "due": null
+    }
    ]
   },
   {
    "channel": "C_INFRA",
-   "ts": "1760090400.000200",
+   "ts": "1791626400.000200",
    "messages": [
     [
      "Ben Carter",
@@ -325,11 +334,20 @@
      "Priya Shah",
      "I'll rotate the database credentials (INFRA-130) by Oct 19, right after cutover"
     ]
+   ],
+   "state": [
+    {
+     "kind": "commitment",
+     "anchor": "INFRA-130",
+     "text": "Rotate the database credentials right after the cutover (needed for the PCI audit)",
+     "owner": "priya@acme.test",
+     "due": "2026-10-19"
+    }
    ]
   },
   {
    "channel": "C_PAYMENTS",
-   "ts": "1760094000.000300",
+   "ts": "1791630000.000300",
    "messages": [
     [
      "Aisha Bello",
@@ -343,11 +361,20 @@
      "Aisha Bello",
      "correct, PAY-40 waits for Priya's cutover on the 16th"
     ]
+   ],
+   "state": [
+    {
+     "kind": "blocker",
+     "anchor": "PAY-40",
+     "text": "Stripe upgrade is blocked on INFRA-123: the new webhook store needs Postgres 16 json_table",
+     "owner": "aisha@acme.test",
+     "due": null
+    }
    ]
   },
   {
    "channel": "C_APP",
-   "ts": "1760097600.000400",
+   "ts": "1791633600.000400",
    "messages": [
     [
      "Rashene Kumar",
@@ -361,11 +388,20 @@
      "Rashene Kumar",
      "Decided with Ravi: behind a feature flag, 10% of users first, full rollout after 2 weeks with no auth errors"
     ]
+   ],
+   "state": [
+    {
+     "kind": "decision",
+     "anchor": "APP-97",
+     "text": "Passkeys roll out behind a feature flag: 10% of users first, full rollout after 2 weeks with no auth errors",
+     "owner": "rashene@acme.test",
+     "due": null
+    }
    ]
   },
   {
    "channel": "C_APP",
-   "ts": "1760101200.000500",
+   "ts": "1791637200.000500",
    "messages": [
     [
      "Sam Lee",
@@ -379,11 +415,12 @@
      "Grace Kim",
      "sounds good, thanks!"
     ]
-   ]
+   ],
+   "state": []
   },
   {
    "channel": "C_INCIDENTS",
-   "ts": "1759917600.000600",
+   "ts": "1791453600.000600",
    "messages": [
     [
      "Lena Fischer",
@@ -397,11 +434,20 @@
      "Lena Fischer",
      "Omar will get CI under 10 minutes and off shared staging (INFRA-142) by Oct 31"
     ]
+   ],
+   "state": [
+    {
+     "kind": "commitment",
+     "anchor": "INFRA-142",
+     "text": "Get CI under 10 minutes and off shared staging",
+     "owner": "omar@acme.test",
+     "due": "2026-10-31"
+    }
    ]
   },
   {
    "channel": "C_DATA",
-   "ts": "1760104800.000700",
+   "ts": "1791640800.000700",
    "messages": [
     [
      "Hannah Wright",
@@ -411,11 +457,20 @@
      "Mei Chen",
      "yes, UTC vs local timezone bug (DATA-12). Fix by Wednesday Oct 14, PR acme/data#31"
     ]
+   ],
+   "state": [
+    {
+     "kind": "commitment",
+     "anchor": "DATA-12",
+     "text": "Fix the revenue dashboard timezone bug (UTC vs local) by Wednesday Oct 14",
+     "owner": "mei@acme.test",
+     "due": "2026-10-14"
+    }
    ]
   },
   {
    "channel": "C_INFRA",
-   "ts": "1760108400.000800",
+   "ts": "1791644400.000800",
    "messages": [
     [
      "Marcus Webb",
@@ -425,16 +480,34 @@
      "Olivia Brooks",
      "will look this week"
     ]
+   ],
+   "state": [
+    {
+     "kind": "blocker",
+     "anchor": "INFRA-131",
+     "text": "Redis 7.4 upgrade waits on maintenance window approval from Olivia",
+     "owner": "marcus@acme.test",
+     "due": null
+    }
    ]
   },
   {
    "channel": "C_GENERAL",
-   "ts": "1760112000.000900",
+   "ts": "1791648000.000900",
    "messages": [
     [
      "Hannah Wright",
      "Q4 planning offsite is Nov 3 in Lisbon. Agenda to follow."
     ]
+   ],
+   "state": [
+    {
+     "kind": "decision",
+     "anchor": "slack:C_GENERAL",
+     "text": "Q4 planning offsite is Nov 3 in Lisbon",
+     "owner": "hannah@acme.test",
+     "due": null
+    }
    ]
   }
  ]

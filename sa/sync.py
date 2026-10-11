@@ -123,16 +123,32 @@ def load_github(conn, repo, items):
         linked = conn.execute(
             "select id from workstream where anchor_kind = 'linear' and anchor_id = any(%s) order by id",
             (keys,)).fetchone()
+        merged_at = i["pull_request"].get("merged_at") if is_pr else None
+        status = "merged" if merged_at else i["state"]
         if linked:  # PR/issue that references a Linear issue is evidence for it, not a new workstream
             ws = linked[0]
         else:
-            status = "merged" if is_pr and i["pull_request"].get("merged_at") else i["state"]
             owner = ids[1] if len(ids) > 1 else ids[0] if ids else None  # assignee over author
             ws = db.workstream(conn, "github", f"{repo}#{i['number']}", i["title"], status,
                                i["html_url"], scope, owner, i["updated_at"])
-        db.evidence(conn, i["html_url"], "github", scope, i["title"], i["updated_at"], ws)
+        db.evidence(conn, i["html_url"], "github", scope, i["title"], i["updated_at"], ws,
+                    author_id=ids[0] if i["user"] else None, status=status, merged_at=merged_at)
         n += 1
     return n
+
+
+def fetch_github_collaborators(repo, token):
+    """Logins that can read the repo. Needs a token with push access to it."""
+    r = httpx.get(f"https://api.github.com/repos/{repo}/collaborators?per_page=100",
+                  headers={"Accept": "application/vnd.github+json", "Authorization": f"Bearer {token}"}, timeout=30)
+    r.raise_for_status()  # ponytail: first 100; paginate like fetch_github when a repo has more
+    return [u["login"] for u in r.json()]
+
+
+def load_github_collaborators(conn, repo, logins):
+    for login in logins:
+        db.grant(conn, db.person(conn, login, github_login=login), f"github:{repo}")
+    return len(logins)
 
 
 def unlinked_github_logins(conn):
@@ -163,6 +179,21 @@ def load_slack_users(conn, users):
             conn.execute("delete from person_scope where person_id = %s", (p,))
         n += 1
     return n
+
+
+def slack_url(base, channel, ts):
+    """Slack permalink. base = workspace URL from auth.test, e.g. https://acme.slack.com/"""
+    return f"{base}archives/{channel}/p{ts.replace('.', '')}"
+
+
+def link_thread(conn, url, channel, at, text):
+    """Pointer from a Slack thread to the workstream it talks about, found deterministically by ticket key.
+    Stores the permalink and who can see it, never the text. Returns the evidence id, or None if nothing matched.
+    ponytail: first key wins; a thread about two tickets links to the first one mentioned."""
+    keys = LINEAR_KEY.findall(text)
+    row = conn.execute("select id from workstream where anchor_kind = 'linear' and anchor_id = any(%s) "
+                       "order by array_position(%s, anchor_id) limit 1", (keys, keys)).fetchone()
+    return row and db.evidence(conn, url, "slack", f"slack:{channel}", None, at, row[0])
 
 
 def load_slack_channels(conn, channels):

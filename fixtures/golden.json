@@ -59,7 +59,7 @@
   {"asker": "olivia@acme.test", "owner": "kenji@acme.test", "q": "how many PRs were merged in acme/platform since Oct 1?", "level": 1, "kind": "structured", "expect": ["4"]},
   {"asker": "ravi@acme.test", "owner": "tom@acme.test", "q": "what's Tom working on?", "level": 1, "kind": "unavailable", "why": "Tom left"},
   {"asker": "yuki@acme.test", "owner": "marcus@acme.test", "q": "what's Marcus blocked on?", "level": 1, "kind": "state", "expect": ["maintenance window", "Olivia"]},
-  {"asker": "paul@acme.test", "owner": "lena@acme.test", "q": "any open incidents?", "level": 1, "kind": "structured", "expect": ["Done"], "sources": ["INFRA-145"]},
+  {"asker": "paul@acme.test", "owner": "lena@acme.test", "q": "any open incidents?", "level": 1, "kind": "semantic", "expect": ["postmortem"], "sources": ["C_INCIDENTS"], "why": "Paul has no Linear account: answered from the #incidents thread, never from INFRA-145's status"},
   {"asker": "ben@acme.test", "owner": "priya@acme.test", "q": "will the DB creds rotate before the audit?", "level": 1, "kind": "state", "expect": ["Oct 19"]},
   {"asker": "dana@acme.test", "owner": "yuki@acme.test", "q": "can you take over INFRA-140?", "level": 4, "kind": "escalate"},
   {"asker": "sam@acme.test", "owner": "rashid@acme.test", "q": "what's Rashid working on?", "level": 1, "kind": "structured", "expect": ["APP-99"]},

@@ -352,5 +352,44 @@
   "rmenon": [
    "ravi@acme.test"
   ]
+ },
+ "collaborators": {
+  "acme/platform": [
+   "priya-s",
+   "dana-k",
+   "mwebb",
+   "ytanaka",
+   "ofarouk",
+   "lfischer",
+   "samlee",
+   "shaddad",
+   "rkumar-dev",
+   "rashid-a",
+   "chloem",
+   "dalvarez",
+   "gkim",
+   "tbecker",
+   "kmori",
+   "obrooks",
+   "rmenon"
+  ],
+  "acme/payments": [
+   "abello",
+   "bcarter",
+   "npetrova",
+   "lrossi",
+   "fzahra",
+   "jberg",
+   "kmori"
+  ],
+  "acme/data": [
+   "meichen",
+   "anair",
+   "scosta",
+   "ipetrov",
+   "kmori",
+   "obrooks",
+   "rmenon"
+  ]
  }
 }

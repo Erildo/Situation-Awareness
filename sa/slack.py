@@ -12,7 +12,8 @@ MENTION = re.compile(r"<@(\w+)>")
 def _msg(channel, m):
     text = m.get("text", "")
     return {"platform": "slack", "channel": channel, "thread": m.get("thread_ts", m["ts"]), "ts": m["ts"],
-            "author": m.get("user"), "text": text, "mentions": MENTION.findall(text)}
+            "author": m.get("user"), "text": text, "mentions": MENTION.findall(text),
+            "is_reply": "thread_ts" in m and m["thread_ts"] != m["ts"], "dm": m.get("channel_type") == "im"}
 
 
 class Slack:
@@ -20,6 +21,8 @@ class Slack:
         self.app = App(token=bot_token)
         self.client = self.app.client
         self.app_token = app_token
+        me = self.client.auth_test()
+        self.bot_user, self.base_url = me["user_id"], me["url"]  # base_url builds permalinks
 
     def on_message(self, handler):
         @self.app.event("message")
@@ -28,14 +31,29 @@ class Slack:
                 return
             handler(_msg(event["channel"], event))
 
-    def post(self, channel, thread, text, actions=()):
-        """actions: [(label, action_id)] rendered as buttons."""
+    def post(self, channel, thread, text, actions=(), footer=None):
+        """actions: [(label, action_id, value)] rendered as buttons. footer: small grey line under the text."""
         blocks = [{"type": "section", "text": {"type": "mrkdwn", "text": text}}]
+        if footer:
+            blocks.append({"type": "context", "elements": [{"type": "mrkdwn", "text": footer}]})
         if actions:
             blocks.append({"type": "actions", "elements": [
-                {"type": "button", "text": {"type": "plain_text", "text": label}, "action_id": aid}
-                for label, aid in actions]})
+                {"type": "button", "text": {"type": "plain_text", "text": label}, "action_id": aid, "value": value}
+                for label, aid, value in actions]})
         return self.client.chat_postMessage(channel=channel, thread_ts=thread, text=text, blocks=blocks)["ts"]
+
+    def dm(self, user, text):
+        """Post to a user's DM with the bot. -> (channel, ts)"""
+        channel = self.client.conversations_open(users=user)["channel"]["id"]
+        return channel, self.post(channel, None, text)
+
+    def on_action(self, action_id, handler):
+        """handler(user, channel, thread, value) when someone clicks a button posted with this action_id."""
+        @self.app.action(action_id)
+        def _(ack, body):
+            ack()
+            msg = body["message"]
+            handler(body["user"]["id"], body["channel"]["id"], msg.get("thread_ts", msg["ts"]), body["actions"][0]["value"])
 
     def members(self, channel):
         return list(self._pages(self.client.conversations_members, "members", channel=channel))

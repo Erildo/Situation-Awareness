@@ -67,40 +67,55 @@ slack = {
     ],
     # Fixture only: used to seed a dev workspace (M2) and as proposer input (M3). Never loaded into the ledger.
     "threads": [
-        {"channel": "C_INFRA", "ts": "1760086800.000100", "messages": [
+        {"channel": "C_INFRA", "ts": "1791536400.000100", "messages": [
             ["Priya Shah", "PG16 cutover plan for INFRA-123: dry run went clean on staging, PR #812 is in review"],
             ["Kenji Mori", "nice. when do we cut over prod?"],
             ["Priya Shah", "Decided: prod cutover Friday Oct 16, 22:00 UTC, 30 min read-only window"],
             ["Kenji Mori", "approved :white_check_mark:"]]},
-        {"channel": "C_INFRA", "ts": "1760090400.000200", "messages": [
+        {"channel": "C_INFRA", "ts": "1791626400.000200", "messages": [
             ["Ben Carter", "PCI audit needs proof the DB creds rotate after the migration"],
             ["Priya Shah", "I'll rotate the database credentials (INFRA-130) by Oct 19, right after cutover"]]},
-        {"channel": "C_PAYMENTS", "ts": "1760094000.000300", "messages": [
+        {"channel": "C_PAYMENTS", "ts": "1791630000.000300", "messages": [
             ["Aisha Bello", "Stripe upgrade PAY-40 is blocked on INFRA-123: the new webhook store needs PG16 json_table"],
             ["Jonas Berg", "so nothing ships on payments until the cutover?"],
             ["Aisha Bello", "correct, PAY-40 waits for Priya's cutover on the 16th"]]},
-        {"channel": "C_APP", "ts": "1760097600.000400", "messages": [
+        {"channel": "C_APP", "ts": "1791633600.000400", "messages": [
             ["Rashene Kumar", "passkeys (APP-97) PR #821 is ready for review"],
             ["Ravi Menon", "rollout plan?"],
             ["Rashene Kumar", "Decided with Ravi: behind a feature flag, 10% of users first, full rollout after 2 weeks with no auth errors"]]},
-        {"channel": "C_APP", "ts": "1760101200.000500", "messages": [
+        {"channel": "C_APP", "ts": "1791637200.000500", "messages": [
             ["Sam Lee", "APP-88 root cause: N+1 queries in price lookup. PR #790 caches them, merged."],
             ["Sam Lee", "checkout p95 back to 180ms from 950ms"],
             ["Grace Kim", "sounds good, thanks!"]]},
-        {"channel": "C_INCIDENTS", "ts": "1759917600.000600", "messages": [
+        {"channel": "C_INCIDENTS", "ts": "1791453600.000600", "messages": [
             ["Lena Fischer", "Postmortem for the Oct 8 staging outage is in INFRA-145. Root cause: CI ran migrations against staging."],
             ["Kenji Mori", "action items?"],
             ["Lena Fischer", "Omar will get CI under 10 minutes and off shared staging (INFRA-142) by Oct 31"]]},
-        {"channel": "C_DATA", "ts": "1760104800.000700", "messages": [
+        {"channel": "C_DATA", "ts": "1791640800.000700", "messages": [
             ["Hannah Wright", "weekly revenue dashboard looks a day off?"],
             ["Mei Chen", "yes, UTC vs local timezone bug (DATA-12). Fix by Wednesday Oct 14, PR acme/data#31"]]},
-        {"channel": "C_INFRA", "ts": "1760108400.000800", "messages": [
+        {"channel": "C_INFRA", "ts": "1791644400.000800", "messages": [
             ["Marcus Webb", "Redis 7.4 upgrade (INFRA-131) is blocked: waiting on maintenance window approval from Olivia"],
             ["Olivia Brooks", "will look this week"]]},
-        {"channel": "C_GENERAL", "ts": "1760112000.000900", "messages": [
+        {"channel": "C_GENERAL", "ts": "1791648000.000900", "messages": [
             ["Hannah Wright", "Q4 planning offsite is Nov 3 in Lisbon. Agenda to follow."]]},
     ],
 }
+
+# What each thread establishes. Hand-seeded into the ledger until M3's proposer extracts it; then these are the
+# proposer's golden answers. (kind, anchor, text, owner, due)
+STATE = {
+    "1791536400.000100": [("decision", "INFRA-123", "Prod cutover to Postgres 16 is Friday Oct 16, 22:00 UTC, with a 30 min read-only window", "Priya Shah", None)],
+    "1791626400.000200": [("commitment", "INFRA-130", "Rotate the database credentials right after the cutover (needed for the PCI audit)", "Priya Shah", "2026-10-19")],
+    "1791630000.000300": [("blocker", "PAY-40", "Stripe upgrade is blocked on INFRA-123: the new webhook store needs Postgres 16 json_table", "Aisha Bello", None)],
+    "1791633600.000400": [("decision", "APP-97", "Passkeys roll out behind a feature flag: 10% of users first, full rollout after 2 weeks with no auth errors", "Rashene Kumar", None)],
+    "1791453600.000600": [("commitment", "INFRA-142", "Get CI under 10 minutes and off shared staging", "Omar Farouk", "2026-10-31")],
+    "1791640800.000700": [("commitment", "DATA-12", "Fix the revenue dashboard timezone bug (UTC vs local) by Wednesday Oct 14", "Mei Chen", "2026-10-14")],
+    "1791644400.000800": [("blocker", "INFRA-131", "Redis 7.4 upgrade waits on maintenance window approval from Olivia", "Marcus Webb", None)],
+    "1791648000.000900": [("decision", "slack:C_GENERAL", "Q4 planning offsite is Nov 3 in Lisbon", "Hannah Wright", None)],
+}
+for t in slack["threads"]:
+    t["state"] = [{"kind": k, "anchor": a, "text": x, "owner": email[o], "due": d} for k, a, x, o, d in STATE.get(t["ts"], [])]
 
 # ---- linear ----
 TEAMS = {"INFRA": False, "APP": False, "PAY": True, "DATA": False}  # PAY is a private team
@@ -182,7 +197,12 @@ for n, _, login, src, _ in P:
     if login and src:
         emails[login] = [email[n]] if src == "org" else [src.split(":", 1)[1]]
 
-github = {"repos": {r: [gh_item(r, *x) for x in items] for r, items in G.items()}, "emails": emails}
+# Repo collaborators (GET /repos/{repo}/collaborators): who can read each repo, beyond its authors.
+REPO_TEAMS = {"acme/platform": ("INFRA", "APP", "LEAD"), "acme/payments": ("PAY",), "acme/data": ("DATA", "LEAD")}
+collaborators = {r: [gh[n] for n, t, *_ in P if n in gh and (t in teams or n == "Kenji Mori")] for r, teams in REPO_TEAMS.items()}
+
+github = {"repos": {r: [gh_item(r, *x) for x in items] for r, items in G.items()}, "emails": emails,
+          "collaborators": collaborators}
 
 for name, data in [("slack", slack), ("linear", linear), ("github", github)]:
     (OUT / f"{name}.json").write_text(json.dumps(data, indent=1, ensure_ascii=False) + "\n")

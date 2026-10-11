@@ -1,0 +1,508 @@
+{
+ "teams": [
+  {
+   "key": "INFRA",
+   "private": false,
+   "members": {
+    "nodes": [
+     {
+      "id": "lin-priya",
+      "name": "Priya Shah",
+      "email": "priya@acme.test",
+      "active": true
+     },
+     {
+      "id": "lin-dana",
+      "name": "Dana Kowalski",
+      "email": "dana@acme.test",
+      "active": true
+     },
+     {
+      "id": "lin-marcus",
+      "name": "Marcus Webb",
+      "email": "marcus@acme.test",
+      "active": true
+     },
+     {
+      "id": "lin-yuki",
+      "name": "Yuki Tanaka",
+      "email": "yuki@acme.test",
+      "active": true
+     },
+     {
+      "id": "lin-omar",
+      "name": "Omar Farouk",
+      "email": "omar@acme.test",
+      "active": true
+     },
+     {
+      "id": "lin-lena",
+      "name": "Lena Fischer",
+      "email": "lena@acme.test",
+      "active": true
+     },
+     {
+      "id": "lin-kenji",
+      "name": "Kenji Mori",
+      "email": "kenji@acme.test",
+      "active": true
+     }
+    ]
+   }
+  },
+  {
+   "key": "APP",
+   "private": false,
+   "members": {
+    "nodes": [
+     {
+      "id": "lin-sam",
+      "name": "Sam Lee",
+      "email": "sam@acme.test",
+      "active": true
+     },
+     {
+      "id": "lin-samira",
+      "name": "Samira Haddad",
+      "email": "samira@acme.test",
+      "active": true
+     },
+     {
+      "id": "lin-rashene",
+      "name": "Rashene Kumar",
+      "email": "rashene@acme.test",
+      "active": true
+     },
+     {
+      "id": "lin-rashid",
+      "name": "Rashid Ali",
+      "email": "rashid@acme.test",
+      "active": true
+     },
+     {
+      "id": "lin-chloe",
+      "name": "Chloe Martin",
+      "email": "chloe@acme.test",
+      "active": true
+     },
+     {
+      "id": "lin-diego",
+      "name": "Diego Alvarez",
+      "email": "diego@acme.test",
+      "active": true
+     },
+     {
+      "id": "lin-grace",
+      "name": "Grace Kim",
+      "email": "grace@acme.test",
+      "active": true
+     },
+     {
+      "id": "lin-tom",
+      "name": "Tom Becker",
+      "email": "tom@acme.test",
+      "active": false
+     },
+     {
+      "id": "lin-kenji",
+      "name": "Kenji Mori",
+      "email": "kenji@acme.test",
+      "active": true
+     }
+    ]
+   }
+  },
+  {
+   "key": "PAY",
+   "private": true,
+   "members": {
+    "nodes": [
+     {
+      "id": "lin-aisha",
+      "name": "Aisha Bello",
+      "email": "aisha@acme.test",
+      "active": true
+     },
+     {
+      "id": "lin-ben",
+      "name": "Ben Carter",
+      "email": "ben@acme.test",
+      "active": true
+     },
+     {
+      "id": "lin-nina",
+      "name": "Nina Petrova",
+      "email": "nina@acme.test",
+      "active": true
+     },
+     {
+      "id": "lin-leo",
+      "name": "Leo Rossi",
+      "email": "leo@acme.test",
+      "active": true
+     },
+     {
+      "id": "lin-fatima",
+      "name": "Fatima Zahra",
+      "email": "fatima@acme.test",
+      "active": true
+     },
+     {
+      "id": "lin-jonas",
+      "name": "Jonas Berg",
+      "email": "jonas@acme.test",
+      "active": true
+     },
+     {
+      "id": "lin-kenji",
+      "name": "Kenji Mori",
+      "email": "kenji@acme.test",
+      "active": true
+     }
+    ]
+   }
+  },
+  {
+   "key": "DATA",
+   "private": false,
+   "members": {
+    "nodes": [
+     {
+      "id": "lin-mei",
+      "name": "Mei Chen",
+      "email": "mei@acme.test",
+      "active": true
+     },
+     {
+      "id": "lin-arjun",
+      "name": "Arjun Nair",
+      "email": "arjun@acme.test",
+      "active": true
+     },
+     {
+      "id": "lin-sofia",
+      "name": "Sofia Costa",
+      "email": "sofia@acme.test",
+      "active": true
+     },
+     {
+      "id": "lin-ivan",
+      "name": "Ivan Petrov",
+      "email": "ivan@acme.test",
+      "active": true
+     },
+     {
+      "id": "lin-kenji",
+      "name": "Kenji Mori",
+      "email": "kenji@acme.test",
+      "active": true
+     }
+    ]
+   }
+  }
+ ],
+ "issues": [
+  {
+   "identifier": "INFRA-123",
+   "title": "Migrate primary DB to Postgres 16",
+   "url": "https://linear.app/acme/issue/INFRA-123",
+   "updatedAt": "2026-10-10T14:00:00Z",
+   "state": {
+    "name": "In Review"
+   },
+   "team": {
+    "key": "INFRA",
+    "private": false
+   },
+   "assignee": {
+    "id": "lin-priya",
+    "name": "Priya Shah",
+    "email": "priya@acme.test"
+   }
+  },
+  {
+   "identifier": "INFRA-130",
+   "title": "Rotate database credentials after cutover",
+   "url": "https://linear.app/acme/issue/INFRA-130",
+   "updatedAt": "2026-10-09T09:00:00Z",
+   "state": {
+    "name": "Todo"
+   },
+   "team": {
+    "key": "INFRA",
+    "private": false
+   },
+   "assignee": {
+    "id": "lin-priya",
+    "name": "Priya Shah",
+    "email": "priya@acme.test"
+   }
+  },
+  {
+   "identifier": "INFRA-131",
+   "title": "Upgrade Redis to 7.4",
+   "url": "https://linear.app/acme/issue/INFRA-131",
+   "updatedAt": "2026-10-10T15:00:00Z",
+   "state": {
+    "name": "Blocked"
+   },
+   "team": {
+    "key": "INFRA",
+    "private": false
+   },
+   "assignee": {
+    "id": "lin-marcus",
+    "name": "Marcus Webb",
+    "email": "marcus@acme.test"
+   }
+  },
+  {
+   "identifier": "INFRA-140",
+   "title": "Split Terraform state per environment",
+   "url": "https://linear.app/acme/issue/INFRA-140",
+   "updatedAt": "2026-10-02T10:00:00Z",
+   "state": {
+    "name": "Backlog"
+   },
+   "team": {
+    "key": "INFRA",
+    "private": false
+   },
+   "assignee": {
+    "id": "lin-yuki",
+    "name": "Yuki Tanaka",
+    "email": "yuki@acme.test"
+   }
+  },
+  {
+   "identifier": "INFRA-142",
+   "title": "Get CI under 10 minutes and off shared staging",
+   "url": "https://linear.app/acme/issue/INFRA-142",
+   "updatedAt": "2026-10-09T12:00:00Z",
+   "state": {
+    "name": "In Progress"
+   },
+   "team": {
+    "key": "INFRA",
+    "private": false
+   },
+   "assignee": {
+    "id": "lin-omar",
+    "name": "Omar Farouk",
+    "email": "omar@acme.test"
+   }
+  },
+  {
+   "identifier": "INFRA-145",
+   "title": "Postmortem: Oct 8 staging outage",
+   "url": "https://linear.app/acme/issue/INFRA-145",
+   "updatedAt": "2026-10-08T20:00:00Z",
+   "state": {
+    "name": "Done"
+   },
+   "team": {
+    "key": "INFRA",
+    "private": false
+   },
+   "assignee": {
+    "id": "lin-lena",
+    "name": "Lena Fischer",
+    "email": "lena@acme.test"
+   }
+  },
+  {
+   "identifier": "APP-88",
+   "title": "Checkout latency regression",
+   "url": "https://linear.app/acme/issue/APP-88",
+   "updatedAt": "2026-10-10T16:30:00Z",
+   "state": {
+    "name": "Done"
+   },
+   "team": {
+    "key": "APP",
+    "private": false
+   },
+   "assignee": {
+    "id": "lin-sam",
+    "name": "Sam Lee",
+    "email": "sam@acme.test"
+   }
+  },
+  {
+   "identifier": "APP-91",
+   "title": "Dark mode for settings",
+   "url": "https://linear.app/acme/issue/APP-91",
+   "updatedAt": "2026-10-01T08:00:00Z",
+   "state": {
+    "name": "Backlog"
+   },
+   "team": {
+    "key": "APP",
+    "private": false
+   },
+   "assignee": null
+  },
+  {
+   "identifier": "APP-95",
+   "title": "New onboarding flow",
+   "url": "https://linear.app/acme/issue/APP-95",
+   "updatedAt": "2026-10-07T11:00:00Z",
+   "state": {
+    "name": "In Progress"
+   },
+   "team": {
+    "key": "APP",
+    "private": false
+   },
+   "assignee": {
+    "id": "lin-chloe",
+    "name": "Chloe Martin",
+    "email": "chloe@acme.test"
+   }
+  },
+  {
+   "identifier": "APP-97",
+   "title": "Migrate auth to passkeys",
+   "url": "https://linear.app/acme/issue/APP-97",
+   "updatedAt": "2026-10-10T13:00:00Z",
+   "state": {
+    "name": "In Review"
+   },
+   "team": {
+    "key": "APP",
+    "private": false
+   },
+   "assignee": {
+    "id": "lin-rashene",
+    "name": "Rashene Kumar",
+    "email": "rashene@acme.test"
+   }
+  },
+  {
+   "identifier": "APP-99",
+   "title": "Fix auth token refresh race",
+   "url": "https://linear.app/acme/issue/APP-99",
+   "updatedAt": "2026-10-06T09:30:00Z",
+   "state": {
+    "name": "Todo"
+   },
+   "team": {
+    "key": "APP",
+    "private": false
+   },
+   "assignee": {
+    "id": "lin-rashid",
+    "name": "Rashid Ali",
+    "email": "rashid@acme.test"
+   }
+  },
+  {
+   "identifier": "APP-102",
+   "title": "iOS crash on launch (v3.2)",
+   "url": "https://linear.app/acme/issue/APP-102",
+   "updatedAt": "2026-10-10T09:00:00Z",
+   "state": {
+    "name": "In Progress"
+   },
+   "team": {
+    "key": "APP",
+    "private": false
+   },
+   "assignee": {
+    "id": "lin-grace",
+    "name": "Grace Kim",
+    "email": "grace@acme.test"
+   }
+  },
+  {
+   "identifier": "PAY-40",
+   "title": "Upgrade Stripe API to 2026-09",
+   "url": "https://linear.app/acme/issue/PAY-40",
+   "updatedAt": "2026-10-10T17:00:00Z",
+   "state": {
+    "name": "Blocked"
+   },
+   "team": {
+    "key": "PAY",
+    "private": true
+   },
+   "assignee": {
+    "id": "lin-aisha",
+    "name": "Aisha Bello",
+    "email": "aisha@acme.test"
+   }
+  },
+  {
+   "identifier": "PAY-44",
+   "title": "Refunds for partial orders",
+   "url": "https://linear.app/acme/issue/PAY-44",
+   "updatedAt": "2026-10-05T10:00:00Z",
+   "state": {
+    "name": "Todo"
+   },
+   "team": {
+    "key": "PAY",
+    "private": true
+   },
+   "assignee": {
+    "id": "lin-nina",
+    "name": "Nina Petrova",
+    "email": "nina@acme.test"
+   }
+  },
+  {
+   "identifier": "PAY-47",
+   "title": "PCI audit evidence collection",
+   "url": "https://linear.app/acme/issue/PAY-47",
+   "updatedAt": "2026-10-09T16:00:00Z",
+   "state": {
+    "name": "In Progress"
+   },
+   "team": {
+    "key": "PAY",
+    "private": true
+   },
+   "assignee": {
+    "id": "lin-ben",
+    "name": "Ben Carter",
+    "email": "ben@acme.test"
+   }
+  },
+  {
+   "identifier": "DATA-12",
+   "title": "Weekly revenue dashboard off by one day",
+   "url": "https://linear.app/acme/issue/DATA-12",
+   "updatedAt": "2026-10-10T18:00:00Z",
+   "state": {
+    "name": "In Progress"
+   },
+   "team": {
+    "key": "DATA",
+    "private": false
+   },
+   "assignee": {
+    "id": "lin-mei",
+    "name": "Mei Chen",
+    "email": "mei@acme.test"
+   }
+  },
+  {
+   "identifier": "DATA-15",
+   "title": "Move warehouse jobs to dbt",
+   "url": "https://linear.app/acme/issue/DATA-15",
+   "updatedAt": "2026-10-03T10:00:00Z",
+   "state": {
+    "name": "Backlog"
+   },
+   "team": {
+    "key": "DATA",
+    "private": false
+   },
+   "assignee": {
+    "id": "lin-arjun",
+    "name": "Arjun Nair",
+    "email": "arjun@acme.test"
+   }
+  }
+ ]
+}

@@ -1,0 +1,441 @@
+{
+ "users": [
+  {
+   "id": "U_PRIYA",
+   "name": "Priya Shah",
+   "email": "priya@acme.test",
+   "deleted": false
+  },
+  {
+   "id": "U_DANA",
+   "name": "Dana Kowalski",
+   "email": "dana@acme.test",
+   "deleted": false
+  },
+  {
+   "id": "U_MARCUS",
+   "name": "Marcus Webb",
+   "email": "marcus@acme.test",
+   "deleted": false
+  },
+  {
+   "id": "U_YUKI",
+   "name": "Yuki Tanaka",
+   "email": "yuki@acme.test",
+   "deleted": false
+  },
+  {
+   "id": "U_OMAR",
+   "name": "Omar Farouk",
+   "email": "omar@acme.test",
+   "deleted": false
+  },
+  {
+   "id": "U_LENA",
+   "name": "Lena Fischer",
+   "email": "lena@acme.test",
+   "deleted": false
+  },
+  {
+   "id": "U_SAM",
+   "name": "Sam Lee",
+   "email": "sam@acme.test",
+   "deleted": false
+  },
+  {
+   "id": "U_SAMIRA",
+   "name": "Samira Haddad",
+   "email": "samira@acme.test",
+   "deleted": false
+  },
+  {
+   "id": "U_RASHENE",
+   "name": "Rashene Kumar",
+   "email": "rashene@acme.test",
+   "deleted": false
+  },
+  {
+   "id": "U_RASHID",
+   "name": "Rashid Ali",
+   "email": "rashid@acme.test",
+   "deleted": false
+  },
+  {
+   "id": "U_CHLOE",
+   "name": "Chloe Martin",
+   "email": "chloe@acme.test",
+   "deleted": false
+  },
+  {
+   "id": "U_DIEGO",
+   "name": "Diego Alvarez",
+   "email": "diego@acme.test",
+   "deleted": false
+  },
+  {
+   "id": "U_GRACE",
+   "name": "Grace Kim",
+   "email": "grace@acme.test",
+   "deleted": false
+  },
+  {
+   "id": "U_TOM",
+   "name": "Tom Becker",
+   "email": "tom@acme.test",
+   "deleted": true
+  },
+  {
+   "id": "U_AISHA",
+   "name": "Aisha Bello",
+   "email": "aisha@acme.test",
+   "deleted": false
+  },
+  {
+   "id": "U_BEN",
+   "name": "Ben Carter",
+   "email": "ben@acme.test",
+   "deleted": false
+  },
+  {
+   "id": "U_NINA",
+   "name": "Nina Petrova",
+   "email": "nina@acme.test",
+   "deleted": false
+  },
+  {
+   "id": "U_LEO",
+   "name": "Leo Rossi",
+   "email": "leo@acme.test",
+   "deleted": false
+  },
+  {
+   "id": "U_FATIMA",
+   "name": "Fatima Zahra",
+   "email": "fatima@acme.test",
+   "deleted": false
+  },
+  {
+   "id": "U_JONAS",
+   "name": "Jonas Berg",
+   "email": "jonas@acme.test",
+   "deleted": false
+  },
+  {
+   "id": "U_MEI",
+   "name": "Mei Chen",
+   "email": "mei@acme.test",
+   "deleted": false
+  },
+  {
+   "id": "U_ARJUN",
+   "name": "Arjun Nair",
+   "email": "arjun@acme.test",
+   "deleted": false
+  },
+  {
+   "id": "U_SOFIA",
+   "name": "Sofia Costa",
+   "email": "sofia@acme.test",
+   "deleted": false
+  },
+  {
+   "id": "U_IVAN",
+   "name": "Ivan Petrov",
+   "email": "ivan@acme.test",
+   "deleted": false
+  },
+  {
+   "id": "U_HANNAH",
+   "name": "Hannah Wright",
+   "email": "hannah@acme.test",
+   "deleted": false
+  },
+  {
+   "id": "U_KENJI",
+   "name": "Kenji Mori",
+   "email": "kenji@acme.test",
+   "deleted": false
+  },
+  {
+   "id": "U_OLIVIA",
+   "name": "Olivia Brooks",
+   "email": "olivia@acme.test",
+   "deleted": false
+  },
+  {
+   "id": "U_RAVI",
+   "name": "Ravi Menon",
+   "email": "ravi@acme.test",
+   "deleted": false
+  },
+  {
+   "id": "U_ELENA",
+   "name": "Elena Garcia",
+   "email": "elena@acme.test",
+   "deleted": false
+  },
+  {
+   "id": "U_PAUL",
+   "name": "Paul Dubois",
+   "email": "paul@acme.test",
+   "deleted": false
+  }
+ ],
+ "channels": [
+  {
+   "id": "C_GENERAL",
+   "name": "general",
+   "members": [
+    "U_PRIYA",
+    "U_DANA",
+    "U_MARCUS",
+    "U_YUKI",
+    "U_OMAR",
+    "U_LENA",
+    "U_SAM",
+    "U_SAMIRA",
+    "U_RASHENE",
+    "U_RASHID",
+    "U_CHLOE",
+    "U_DIEGO",
+    "U_GRACE",
+    "U_AISHA",
+    "U_BEN",
+    "U_NINA",
+    "U_LEO",
+    "U_FATIMA",
+    "U_JONAS",
+    "U_MEI",
+    "U_ARJUN",
+    "U_SOFIA",
+    "U_IVAN",
+    "U_HANNAH",
+    "U_KENJI",
+    "U_OLIVIA",
+    "U_RAVI",
+    "U_ELENA",
+    "U_PAUL"
+   ]
+  },
+  {
+   "id": "C_INFRA",
+   "name": "infra",
+   "members": [
+    "U_PRIYA",
+    "U_DANA",
+    "U_MARCUS",
+    "U_YUKI",
+    "U_OMAR",
+    "U_LENA",
+    "U_AISHA",
+    "U_KENJI",
+    "U_OLIVIA"
+   ]
+  },
+  {
+   "id": "C_APP",
+   "name": "app",
+   "members": [
+    "U_SAM",
+    "U_SAMIRA",
+    "U_RASHENE",
+    "U_RASHID",
+    "U_CHLOE",
+    "U_DIEGO",
+    "U_GRACE",
+    "U_KENJI",
+    "U_RAVI",
+    "U_ELENA"
+   ]
+  },
+  {
+   "id": "C_PAYMENTS",
+   "name": "payments",
+   "members": [
+    "U_AISHA",
+    "U_BEN",
+    "U_NINA",
+    "U_LEO",
+    "U_FATIMA",
+    "U_JONAS",
+    "U_HANNAH",
+    "U_KENJI"
+   ]
+  },
+  {
+   "id": "C_DATA",
+   "name": "data",
+   "members": [
+    "U_MEI",
+    "U_ARJUN",
+    "U_SOFIA",
+    "U_IVAN",
+    "U_HANNAH",
+    "U_RAVI"
+   ]
+  },
+  {
+   "id": "C_INCIDENTS",
+   "name": "incidents",
+   "members": [
+    "U_PRIYA",
+    "U_DANA",
+    "U_MARCUS",
+    "U_YUKI",
+    "U_OMAR",
+    "U_LENA",
+    "U_SAM",
+    "U_KENJI",
+    "U_PAUL"
+   ]
+  }
+ ],
+ "threads": [
+  {
+   "channel": "C_INFRA",
+   "ts": "1760086800.000100",
+   "messages": [
+    [
+     "Priya Shah",
+     "PG16 cutover plan for INFRA-123: dry run went clean on staging, PR #812 is in review"
+    ],
+    [
+     "Kenji Mori",
+     "nice. when do we cut over prod?"
+    ],
+    [
+     "Priya Shah",
+     "Decided: prod cutover Friday Oct 16, 22:00 UTC, 30 min read-only window"
+    ],
+    [
+     "Kenji Mori",
+     "approved :white_check_mark:"
+    ]
+   ]
+  },
+  {
+   "channel": "C_INFRA",
+   "ts": "1760090400.000200",
+   "messages": [
+    [
+     "Ben Carter",
+     "PCI audit needs proof the DB creds rotate after the migration"
+    ],
+    [
+     "Priya Shah",
+     "I'll rotate the database credentials (INFRA-130) by Oct 19, right after cutover"
+    ]
+   ]
+  },
+  {
+   "channel": "C_PAYMENTS",
+   "ts": "1760094000.000300",
+   "messages": [
+    [
+     "Aisha Bello",
+     "Stripe upgrade PAY-40 is blocked on INFRA-123: the new webhook store needs PG16 json_table"
+    ],
+    [
+     "Jonas Berg",
+     "so nothing ships on payments until the cutover?"
+    ],
+    [
+     "Aisha Bello",
+     "correct, PAY-40 waits for Priya's cutover on the 16th"
+    ]
+   ]
+  },
+  {
+   "channel": "C_APP",
+   "ts": "1760097600.000400",
+   "messages": [
+    [
+     "Rashene Kumar",
+     "passkeys (APP-97) PR #821 is ready for review"
+    ],
+    [
+     "Ravi Menon",
+     "rollout plan?"
+    ],
+    [
+     "Rashene Kumar",
+     "Decided with Ravi: behind a feature flag, 10% of users first, full rollout after 2 weeks with no auth errors"
+    ]
+   ]
+  },
+  {
+   "channel": "C_APP",
+   "ts": "1760101200.000500",
+   "messages": [
+    [
+     "Sam Lee",
+     "APP-88 root cause: N+1 queries in price lookup. PR #790 caches them, merged."
+    ],
+    [
+     "Sam Lee",
+     "checkout p95 back to 180ms from 950ms"
+    ],
+    [
+     "Grace Kim",
+     "sounds good, thanks!"
+    ]
+   ]
+  },
+  {
+   "channel": "C_INCIDENTS",
+   "ts": "1759917600.000600",
+   "messages": [
+    [
+     "Lena Fischer",
+     "Postmortem for the Oct 8 staging outage is in INFRA-145. Root cause: CI ran migrations against staging."
+    ],
+    [
+     "Kenji Mori",
+     "action items?"
+    ],
+    [
+     "Lena Fischer",
+     "Omar will get CI under 10 minutes and off shared staging (INFRA-142) by Oct 31"
+    ]
+   ]
+  },
+  {
+   "channel": "C_DATA",
+   "ts": "1760104800.000700",
+   "messages": [
+    [
+     "Hannah Wright",
+     "weekly revenue dashboard looks a day off?"
+    ],
+    [
+     "Mei Chen",
+     "yes, UTC vs local timezone bug (DATA-12). Fix by Wednesday Oct 14, PR acme/data#31"
+    ]
+   ]
+  },
+  {
+   "channel": "C_INFRA",
+   "ts": "1760108400.000800",
+   "messages": [
+    [
+     "Marcus Webb",
+     "Redis 7.4 upgrade (INFRA-131) is blocked: waiting on maintenance window approval from Olivia"
+    ],
+    [
+     "Olivia Brooks",
+     "will look this week"
+    ]
+   ]
+  },
+  {
+   "channel": "C_GENERAL",
+   "ts": "1760112000.000900",
+   "messages": [
+    [
+     "Hannah Wright",
+     "Q4 planning offsite is Nov 3 in Lisbon. Agenda to follow."
+    ]
+   ]
+  }
+ ]
+}

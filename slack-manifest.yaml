@@ -1,0 +1,16 @@
+# Paste at https://api.slack.com/apps -> Create New App -> From a manifest
+display_information:
+  name: Situation Awareness
+features:
+  bot_user:
+    display_name: twin
+    always_online: true
+oauth_config:
+  scopes:
+    bot: [channels:history, channels:read, chat:write, users:read, users:read.email, dnd:read]
+settings:
+  event_subscriptions:
+    bot_events: [message.channels, member_joined_channel, member_left_channel]
+  interactivity:
+    is_enabled: true
+  socket_mode_enabled: true

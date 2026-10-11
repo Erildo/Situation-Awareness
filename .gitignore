@@ -1,0 +1,7 @@
+.venv/
+__pycache__/
+.env
+
+# Internal planning docs (docs.md) stay local; README.md is the public face
+*.md
+!README.md

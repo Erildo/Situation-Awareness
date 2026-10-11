@@ -1,0 +1,356 @@
+{
+ "repos": {
+  "acme/platform": [
+   {
+    "number": 812,
+    "title": "Postgres 16 cutover script",
+    "body": "Fixes INFRA-123",
+    "state": "open",
+    "html_url": "https://github.com/acme/platform/pull/812",
+    "updated_at": "2026-10-10T14:00:00Z",
+    "user": {
+     "login": "priya-s"
+    },
+    "assignees": [],
+    "pull_request": {
+     "merged_at": null
+    }
+   },
+   {
+    "number": 790,
+    "title": "Cache price lookups",
+    "body": "Fixes APP-88",
+    "state": "closed",
+    "html_url": "https://github.com/acme/platform/pull/790",
+    "updated_at": "2026-10-10T16:00:00Z",
+    "user": {
+     "login": "samlee"
+    },
+    "assignees": [],
+    "pull_request": {
+     "merged_at": "2026-10-10T16:00:00Z"
+    }
+   },
+   {
+    "number": 820,
+    "title": "Flaky test in billing suite",
+    "body": null,
+    "state": "open",
+    "html_url": "https://github.com/acme/platform/issues/820",
+    "updated_at": "2026-10-10T18:00:00Z",
+    "user": {
+     "login": "samlee"
+    },
+    "assignees": [
+     {
+      "login": "dana-k"
+     }
+    ]
+   },
+   {
+    "number": 805,
+    "title": "Bump ruff",
+    "body": "",
+    "state": "closed",
+    "html_url": "https://github.com/acme/platform/pull/805",
+    "updated_at": "2026-10-08T10:00:00Z",
+    "user": {
+     "login": "dana-k"
+    },
+    "assignees": [],
+    "pull_request": {
+     "merged_at": "2026-10-08T10:00:00Z"
+    }
+   },
+   {
+    "number": 815,
+    "title": "Redis 7.4 config",
+    "body": "Part of INFRA-131",
+    "state": "open",
+    "html_url": "https://github.com/acme/platform/pull/815",
+    "updated_at": "2026-10-10T15:00:00Z",
+    "user": {
+     "login": "mwebb"
+    },
+    "assignees": [],
+    "pull_request": {
+     "merged_at": null
+    }
+   },
+   {
+    "number": 818,
+    "title": "Parallelize test shards",
+    "body": "INFRA-142",
+    "state": "open",
+    "html_url": "https://github.com/acme/platform/pull/818",
+    "updated_at": "2026-10-09T12:00:00Z",
+    "user": {
+     "login": "ofarouk"
+    },
+    "assignees": [],
+    "pull_request": {
+     "merged_at": null
+    }
+   },
+   {
+    "number": 821,
+    "title": "Passkeys behind feature flag",
+    "body": "Implements APP-97",
+    "state": "open",
+    "html_url": "https://github.com/acme/platform/pull/821",
+    "updated_at": "2026-10-10T13:00:00Z",
+    "user": {
+     "login": "rkumar-dev"
+    },
+    "assignees": [],
+    "pull_request": {
+     "merged_at": null
+    }
+   },
+   {
+    "number": 823,
+    "title": "Mutex around token refresh",
+    "body": "Fixes APP-99",
+    "state": "open",
+    "html_url": "https://github.com/acme/platform/pull/823",
+    "updated_at": "2026-10-06T09:30:00Z",
+    "user": {
+     "login": "rashid-a"
+    },
+    "assignees": [],
+    "pull_request": {
+     "merged_at": null
+    }
+   },
+   {
+    "number": 824,
+    "title": "Onboarding step 2",
+    "body": "APP-95",
+    "state": "closed",
+    "html_url": "https://github.com/acme/platform/pull/824",
+    "updated_at": "2026-10-07T11:00:00Z",
+    "user": {
+     "login": "chloem"
+    },
+    "assignees": [],
+    "pull_request": {
+     "merged_at": "2026-10-07T11:00:00Z"
+    }
+   },
+   {
+    "number": 826,
+    "title": "Fix iOS launch crash",
+    "body": "Fixes APP-102",
+    "state": "open",
+    "html_url": "https://github.com/acme/platform/pull/826",
+    "updated_at": "2026-10-10T09:00:00Z",
+    "user": {
+     "login": "gkim"
+    },
+    "assignees": [],
+    "pull_request": {
+     "merged_at": null
+    }
+   },
+   {
+    "number": 800,
+    "title": "Remove old login page",
+    "body": "",
+    "state": "closed",
+    "html_url": "https://github.com/acme/platform/pull/800",
+    "updated_at": "2026-10-02T15:00:00Z",
+    "user": {
+     "login": "tbecker"
+    },
+    "assignees": [],
+    "pull_request": {
+     "merged_at": "2026-10-02T15:00:00Z"
+    }
+   },
+   {
+    "number": 827,
+    "title": "Add OpenTelemetry tracing",
+    "body": "",
+    "state": "open",
+    "html_url": "https://github.com/acme/platform/pull/827",
+    "updated_at": "2026-10-09T17:00:00Z",
+    "user": {
+     "login": "lfischer"
+    },
+    "assignees": [],
+    "pull_request": {
+     "merged_at": null
+    }
+   },
+   {
+    "number": 828,
+    "title": "Local setup broken on M-series Macs",
+    "body": "make dev fails at the arm64 postgres image",
+    "state": "open",
+    "html_url": "https://github.com/acme/platform/issues/828",
+    "updated_at": "2026-10-09T08:00:00Z",
+    "user": {
+     "login": "dalvarez"
+    },
+    "assignees": []
+   }
+  ],
+  "acme/payments": [
+   {
+    "number": 210,
+    "title": "Stripe API 2026-09 upgrade",
+    "body": "PAY-40",
+    "state": "open",
+    "html_url": "https://github.com/acme/payments/pull/210",
+    "updated_at": "2026-10-10T17:00:00Z",
+    "user": {
+     "login": "abello"
+    },
+    "assignees": [],
+    "pull_request": {
+     "merged_at": null
+    }
+   },
+   {
+    "number": 212,
+    "title": "Partial refunds",
+    "body": "PAY-44",
+    "state": "open",
+    "html_url": "https://github.com/acme/payments/pull/212",
+    "updated_at": "2026-10-05T10:00:00Z",
+    "user": {
+     "login": "npetrova"
+    },
+    "assignees": [],
+    "pull_request": {
+     "merged_at": null
+    }
+   },
+   {
+    "number": 205,
+    "title": "Audit log export",
+    "body": "For PAY-47",
+    "state": "closed",
+    "html_url": "https://github.com/acme/payments/pull/205",
+    "updated_at": "2026-10-09T16:00:00Z",
+    "user": {
+     "login": "bcarter"
+    },
+    "assignees": [],
+    "pull_request": {
+     "merged_at": "2026-10-09T16:00:00Z"
+    }
+   },
+   {
+    "number": 214,
+    "title": "Webhook retries create duplicate charges",
+    "body": null,
+    "state": "open",
+    "html_url": "https://github.com/acme/payments/issues/214",
+    "updated_at": "2026-10-08T12:00:00Z",
+    "user": {
+     "login": "lrossi"
+    },
+    "assignees": [
+     {
+      "login": "jberg"
+     }
+    ]
+   }
+  ],
+  "acme/data": [
+   {
+    "number": 31,
+    "title": "Fix revenue dashboard timezone",
+    "body": "Fixes DATA-12",
+    "state": "open",
+    "html_url": "https://github.com/acme/data/pull/31",
+    "updated_at": "2026-10-10T18:00:00Z",
+    "user": {
+     "login": "meichen"
+    },
+    "assignees": [],
+    "pull_request": {
+     "merged_at": null
+    }
+   }
+  ]
+ },
+ "emails": {
+  "priya-s": [
+   "priya@acme.test"
+  ],
+  "dana-k": [
+   "dana@acme.test"
+  ],
+  "mwebb": [
+   "marcus.webb@gmail.com"
+  ],
+  "ytanaka": [
+   "yuki@acme.test"
+  ],
+  "lfischer": [
+   "lena@acme.test"
+  ],
+  "samlee": [
+   "sam@acme.test"
+  ],
+  "shaddad": [
+   "samira@acme.test"
+  ],
+  "rkumar-dev": [
+   "rashene@acme.test"
+  ],
+  "rashid-a": [
+   "rashid@acme.test"
+  ],
+  "chloem": [
+   "chloe@acme.test"
+  ],
+  "dalvarez": [
+   "diego@acme.test"
+  ],
+  "gkim": [
+   "grace@acme.test"
+  ],
+  "abello": [
+   "aisha@acme.test"
+  ],
+  "bcarter": [
+   "ben@acme.test"
+  ],
+  "npetrova": [
+   "nina@acme.test"
+  ],
+  "lrossi": [
+   "leo@acme.test"
+  ],
+  "fzahra": [
+   "fatima@acme.test"
+  ],
+  "jberg": [
+   "jonas@acme.test"
+  ],
+  "meichen": [
+   "mei@acme.test"
+  ],
+  "anair": [
+   "arjun@acme.test"
+  ],
+  "scosta": [
+   "sofia@acme.test"
+  ],
+  "ipetrov": [
+   "ivan@acme.test"
+  ],
+  "kmori": [
+   "kenji@acme.test"
+  ],
+  "obrooks": [
+   "olivia@acme.test"
+  ],
+  "rmenon": [
+   "ravi@acme.test"
+  ]
+ }
+}
